@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<title>上传二维码解析</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css">
+
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	
+	<div class="container">
+		
+		<h1>上传二维码解析URL</h1>
+		<div id="QRcodeWrap" class="row">
+			<div class="form-group col-sm-6 col-sm-offset-3">
+				<label for="QRcodefile">微信二维码</label>
+				<input type="file" id="QRcodefile" class="form-control" onchange="getUrl(this,'file-url')">
+				<div id="QRcodeImg">
+					<img src="" alt="">
+				</div>
+				<p id="QRcodeURL">这里用来显示所解析的二维码URL地址</p>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/qrcode.js"></script>
+	<script src="js/analyticCode.js"></script>
+	<script>
+
+		function getUrl(e, param) {
+			analyticCode.getUrl(param, e, function(url,src) {
+				$('#QRcodeURL').html(url);
+				$('#QRcodeImg img').attr('src', src);
+			});
+		};
+	</script>
+</body>
+</html>
